@@ -29,3 +29,4 @@ Thumbs.db
 "@ | Set-Content -Path .gitignore
 
 stage1-container/app/app.log
+data/live_logs/

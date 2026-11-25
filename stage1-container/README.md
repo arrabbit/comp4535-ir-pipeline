@@ -8,9 +8,9 @@ An intentionally vulnerable staff portal for the mock company Crystal Tokyo. It 
 
 ## How to run
 
-From the `app` folder:
+On Windows, use **PowerShell** (not WSL). From the `app` folder:
 
-```bash
+```powershell
 pip install flask
 python seed.py
 python app.py
@@ -19,6 +19,14 @@ python app.py
 Open http://127.0.0.1:5000. Stop the app with `Ctrl+C`.
 
 `seed.py` rebuilds the database each time it runs, so every run starts from the same state.
+
+On macOS or Linux, use `python3` instead of `python`. If `pip install flask` fails with an `externally-managed-environment` error, install Flask in a virtual environment:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install flask
+```
 
 _Docker setup (nginx + app) coming soon._
 
