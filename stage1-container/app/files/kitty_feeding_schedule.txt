@@ -1,0 +1,18 @@
+Crystal Tokyo Cat Feeding Schedule
+
+Luna, Artemis and Diana are fed twice daily, at 8:00 and 18:00.
+Feeding duty rotates each day of the week:
+
+   Monday     Usagi Tsukino
+   Tuesday    Ami Mizuno
+   Wednesday  Rei Hino
+   Thursday   Makoto Kino
+   Friday     Minako Aino
+   Saturday   Mamoru Chiba
+   Sunday     Chibiusa Tsukino
+
+Notes
+- Diana gets a smaller portion.
+- Do not feed table scraps, no matter how much Luna asks.
+- If you cannot cover your day, trade with another guardian and notify Luna at
+  least 24 hrs in advance.

@@ -27,3 +27,6 @@ Thumbs.db
 # Secrets
 .env
 "@ | Set-Content -Path .gitignore
+
+stage1-container/app/app.log
+data/live_logs/
