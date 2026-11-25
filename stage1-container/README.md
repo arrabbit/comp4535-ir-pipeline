@@ -2,33 +2,50 @@
 
 Owner: Anna Running Rabbit
 
-An intentionally vulnerable staff portal for the mock company Crystal Tokyo. It is used to generate attack and normal-traffic logs for the rest of the pipeline.
+An intentionally vulnerable staff portal for the mock company Crystal Tokyo. It
+is used to generate attack and normal-traffic logs for the rest of the pipeline.
 
 **Only run this locally.** It is deliberately insecure.
 
 ## How to run
 
+### With Docker (recommended)
+ 
+Requires Docker Desktop to be running. From the `stage1-container` folder:
+ 
+```bash
+docker compose up --build
+```
+ 
+Open http://127.0.0.1:5000. To stop it, press `Ctrl+C`, then run:
+ 
+```bash
+docker compose down
+```
+ 
+The database is rebuilt every time the container starts, so every run starts from the same state.
+ 
+_nginx is not set up yet; it will be added in front of the app._
+ 
+### Without Docker (for quick testing)
+ 
 On Windows, use **PowerShell** (not WSL). From the `app` folder:
-
+ 
 ```powershell
 pip install flask
 python seed.py
 python app.py
 ```
-
-Open http://127.0.0.1:5000. Stop the app with `Ctrl+C`.
-
-`seed.py` rebuilds the database each time it runs, so every run starts from the same state.
-
+ 
+Open http://127.0.0.1:5000. Stop the app with `Ctrl+C`. `seed.py` rebuilds the database each time it runs.
+ 
 On macOS or Linux, use `python3` instead of `python`. If `pip install flask` fails with an `externally-managed-environment` error, install Flask in a virtual environment:
-
+ 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install flask
 ```
-
-_Docker setup (nginx + app) coming soon._
 
 ## Vulnerable endpoints
 
@@ -47,9 +64,11 @@ _Docker setup (nginx + app) coming soon._
 ## Inputs / outputs
 
 **Input:** HTTP requests: normal browsing, or attacks sent with Burp Suite.
-
-**Output:** `app.log`, with one JSON line per request:
-
+ 
+**Output:** `app.log`, with one JSON line per request. With Docker it is written to `data/live_logs/app.log` (not committed to Git); without Docker it is written to the `app` folder.
+ 
+When running in Docker, `src_ip` is currently the Docker network's address (e.g. `172.18.0.1`) rather than the real client. This will be fixed when nginx is added.
+ 
 | Field | Meaning |
 |---|---|
 | `ts` | Time of the request (UTC) |
